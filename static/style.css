@@ -1,0 +1,101 @@
+.selected {
+  font-weight: bold;
+}
+
+.popup {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  min-width: 600px;
+  width: 50%;
+  min-height: 30%;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 0px 40px #444;
+  -webkit-box-sizing: border-box;
+  z-index:1002;
+  overflow: auto;
+  padding: 30px;
+}
+
+.black_overlay {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 200%;
+  background-color: black;
+  z-index:1001;
+  -moz-opacity: 0.5;
+  opacity:.50;
+  filter: alpha(opacity=50);
+}
+
+#passenger_form {
+	display: none;
+}
+
+tr:nth-child(even) {
+  background-color: #E6E6E6;
+}
+
+#select_flight {
+  width: 400px;
+  margin-top: 30px;
+}
+
+#labels {
+  font-size: 20px;
+}
+
+.centered {
+  margin-left: 60px;
+}
+
+table {
+  margin-top:15px;
+}
+
+td {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#airline {
+  width: 202px;
+}
+
+#cost {
+  width: 153px;
+}
+
+#departs {
+  width: 400px;
+}
+
+#arrives {
+  width: 400px;
+}
+
+#submit_flight {
+  width: 100%;
+  margin-top: 15px;
+}
+
+#ok {
+  margin-top:15px;
+  width: 100%;
+}
+
+#fail_message {
+  font-size: 16px;
+}
+
+#confirmed {
+  font-size: 18px;
+  line-height: 0.7em;
+}
+
+

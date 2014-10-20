@@ -1,0 +1,16 @@
+<div id="success" class="popup">
+  <h1>Success!</h1>
+	<h3>Congratulations! Your booking has been a success. See below for your confirmation:</h3>
+	<ul id="confirmed">
+		<li>Confirmation: ${code}</li><br></br>
+		<li>First Name: ${confirmation.first_name}</li><br></br>
+		<li>Last Name: ${confirmation.last_name}</li><br></br>
+		<li>Number of Bags: ${confirmation.bags}</li><br></br>
+		<li>Airline: ${flight.airline}</li><br></br>
+		<li>Flight number: ${flight.number}</li><br></br>
+		<li>Cost: ${flight.cost}</li><br></br>
+		<li>Departs from ${flight.departs.airport} on ${flight.departs.when}</li><br></br>
+		<li>Arrives at ${flight.arrives.airport} on ${flight.arrives.when}</li><br></br>
+	</ul>
+  <button id="ok" class="btn btn-primary btn-lg">Ok</button>
+</div>
