@@ -19,6 +19,9 @@ To set up the development environment:
     - Install Flask:
       % pip install flask
 
+    - Install Flask-Genshi
+      % pip install Flask-Genshi
+
     - Run this app:
       % python airline_tickets.py
 
@@ -35,8 +38,6 @@ from flaskext.genshi import Genshi, render_response, render_template
 app = Flask(__name__)
 genshi = Genshi(app)
 
-app.debug = True
-
 flight_data = json.load(open('flights.json'))
 
 @app.route('/', methods=['GET'])
@@ -50,23 +51,21 @@ def flights():
     '''Displays flight data'''
     return jsonify(flight_data)
 
-@app.route('/mynameis/<userid>', methods=['POST'])
-def mynameis(userid):
-    '''POST and named param in route example'''
-    return jsonify({
-        'name': request.form.get('name', 'No name given'),
-        'userid': userid,
-    })
-
 @app.route('/flight/book', methods=['POST'])
 def book():
+    """This is the endpoint for the passenger's data. The POSTed data is stored in
+       the 'confirmation' dictionary. The variable 'booking status' is set to either None
+       or the confirmation code, whether or not the flight is available. The success.html
+       or failure.html is then returned via AJAX depending on that result."""
     confirmation = {'first_name' : request.form['first_name'],
                     'last_name' :  request.form['last_name'],
                     'bags' : request.form['bags'],
                     'flight_number' : request.form['flight_number']}
     booking_status = confirmBooking(request.form['flight_number'])
     if booking_status:
+        # Retrieves copy of requested flight's data, via the find_flight_by_number function
         booked_flight = find_flight_by_number(request.form['flight_number'])
+        # Replaces copy's timestamps and cost with more human-readable notation
         booked_flight['arrives']['when'] = format_date(booked_flight['arrives']['when'])
         booked_flight['departs']['when'] = format_date(booked_flight['departs']['when'])
         booked_flight['cost'] = format_money(booked_flight['cost'])
@@ -97,11 +96,14 @@ def find_flight_by_number(flight_number):
             return copy.deepcopy(flight)
 
 def format_date(utc_string):
-    '''Changes utc string to a more readable format, returns as a string'''
+    '''Changes utc string to a more readable format; takes a UTC string and
+       returns a more readable string'''
     date = datetime.strptime(utc_string, "%Y-%m-%dT%H:%M:%S" )
     return date.strftime("%a %B%e, %Y - %r")
 
 def format_money(raw):
+    """Takes a float representing a dollar ammount as input and returns a
+       formatted string, e.g. 5.43 => '$5.43', 1 => '$1.00', 592.8 => '$592.80'"""
     raw = int(raw * 100)
     dollars = raw / 100
     cents = raw % 100

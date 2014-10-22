@@ -1,16 +1,52 @@
 <div id="success" class="popup">
+	<img src="../static/x.png" class="x"></img>
   <h1>Success!</h1>
 	<h3>Congratulations! Your booking has been a success. See below for your confirmation:</h3>
-	<ul id="confirmed">
-		<li>Confirmation: ${code}</li><br></br>
-		<li>First Name: ${confirmation.first_name}</li><br></br>
-		<li>Last Name: ${confirmation.last_name}</li><br></br>
-		<li>Number of Bags: ${confirmation.bags}</li><br></br>
-		<li>Airline: ${flight.airline}</li><br></br>
-		<li>Flight number: ${flight.number}</li><br></br>
-		<li>Cost: ${flight.cost}</li><br></br>
-		<li>Departs from ${flight.departs.airport} on ${flight.departs.when}</li><br></br>
-		<li>Arrives at ${flight.arrives.airport} on ${flight.arrives.when}</li><br></br>
-	</ul>
+	<table id="confirmation_table">
+		<tr>
+			<td>Confirmation Code</td>
+			<td>${code}</td>
+		</tr>
+		<tr>
+			<td>First Name</td>
+			<td>${confirmation.first_name}</td>
+		</tr>
+		<tr>
+			<td>Last Name</td>
+			<td>${confirmation.last_name}</td>
+		</tr>
+		<tr>
+			<td>Number of Bags</td>
+			<td>${confirmation.bags}</td>
+		</tr>
+		<tr>
+			<td>Airline</td>
+			<td>${flight.airline}</td>
+		</tr>
+		<tr>
+			<td>Flight Number</td>
+			<td>${flight.number}</td>
+		</tr>
+		<tr>
+			<td>Cost</td>
+			<td>${flight.cost}</td>
+		</tr>
+		<tr>
+			<td>Departure Airport</td>
+			<td>${flight.departs.airport}</td>
+		</tr>
+		<tr>
+			<td>Departure Time</td>
+			<td>${flight.departs.when}</td>
+		</tr>
+		<tr>
+			<td>Arrival Airport</td>
+			<td>${flight.arrives.airport}</td>
+		</tr>
+		<tr>
+			<td>Arrival Time</td>
+			<td>${flight.arrives.when}</td>
+		</tr>
+	</table>
   <button id="ok" class="btn btn-primary btn-lg">Ok</button>
 </div>
